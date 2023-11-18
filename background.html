@@ -1,0 +1,52 @@
+<html>
+  <body>
+    <img src="bitcoin.png" height=100 />
+    <section>
+      <div>
+        <h2>Regular</h2>
+        <span id="regularPrice"></span>
+        <span>sat/byte</span>
+      </div>
+      <div>
+        <h2>Priority</h2>
+        <span id="priorityPrice"></span>
+        <span>sat/byte</span>
+      </div>
+      <div>
+        <h2>Predicted regular transaction cost</h2>
+        <div>
+          <span id="transactionPrice"></span>
+          <span>sat</span>
+        <div>
+        <p class="asymp">&asymp;</p>
+        <div>
+          <span id="transactionDolar"></span>
+          <span>usd</span>
+        <div>
+      </div>
+    </section>
+    <script src="bitcoin.js" ></script>
+  </body>
+</html>
+
+<style>
+  body {
+    text-align: center;
+    padding: 0.5rem 1rem;
+  }
+  section {
+    width: 12rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-top: 0.5rem;
+  }
+  section h2 {
+    font-size: 1.25rem;
+  }
+  div:last-of-type {
+    	grid-column: span 2 / span 2;
+  }
+  .asymp {
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "FeeFlutter bitcoin fee monitor",
+  "description": "Estimated current fee on bitcoin blockchain",
+  "version": "0.1",
+  "action": {
+    "default_popup": "background.html",
+    "default_icon": "bitcoin.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage"]
+}
