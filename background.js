@@ -1,23 +1,43 @@
-async function handleRequest() {
+async function getFee() {
   try {
     let res = await fetch('https://api.blockchain.info/mempool/fees')
     const {regular, priority, limits} = await res.json()
     chrome.storage.local.set({fee: {regular, priority, limits}})
-    return regular.toString()
+    return {text: regular.toString(), color: mapValueToColor(regular)}
   } catch (err) {
     console.log(err)
     chrome.storage.local.set({fee: {err}})
-    return "ERR"
+    return {text: 'ERR', color: "#000000"}
   }
 }
 async function setBadge() {
-  chrome.action.setBadgeText({
-    text: await handleRequest(),
+  const {text, color} = await getFee()
+  await chrome.action.setBadgeText({
+    text
   });
+  await chrome.action.setBadgeBackgroundColor({
+    color
+  })
 }
-chrome.runtime.onInstalled.addListener(async () => {
+
+function mapValueToColor(value) {
+    const minValue = 0
+    const maxValue = 200
+    // Ensure the value is within the specified range
+    value = Math.min(Math.max(value, minValue), maxValue);
+
+    // Normalize the value to a percentage within the range
+    var percentage = (value - minValue) / (maxValue - minValue);
+
+    // Interpolate between green (0, 255, 0) and red (255, 0, 0)
+    var green = Math.round((1 - percentage) * 255);
+    var red = Math.round(percentage * 255);
+
+    return [red, green, 0, 1];
+}
+
+
+setBadge()
+setInterval(async () => {
   setBadge()
-  setInterval(async () => {
-    setBadge()
-  }, 1000 * 30) //seconds
-});
+}, 1000 * 10) //seconds

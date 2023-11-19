@@ -4,25 +4,21 @@
     <section>
       <div>
         <h2>Regular</h2>
-        <span id="regularPrice"></span>
+        <span id="regularPrice">[LOADING]</span>
         <span>sat/byte</span>
       </div>
       <div>
         <h2>Priority</h2>
-        <span id="priorityPrice"></span>
+        <span id="priorityPrice">[LOADING]</span>
         <span>sat/byte</span>
       </div>
       <div>
-        <h2>Predicted regular transaction cost</h2>
-        <div>
-          <span id="transactionPrice"></span>
-          <span>sat</span>
-        <div>
-        <p class="asymp">&asymp;</p>
-        <div>
-          <span id="transactionDolar"></span>
-          <span>usd</span>
-        <div>
+        <h2>Transaction Cost</h2>
+        <span id="transactionPrice">[LOADING]</span>
+        <span>sat</span>
+        <span class="asymp">&asymp;</span>
+        <span id="transactionDolar">[LOADING]</span>
+        <span>usd</span>
       </div>
     </section>
     <script src="bitcoin.js" ></script>
@@ -30,13 +26,19 @@
 </html>
 
 <style>
+  html {
+    height: fit-content;
+  }
   body {
     text-align: center;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1.5rem;
+    height: fit-content;
   }
   section {
     width: 12rem;
+    height: fit-content;
     display: grid;
+    gap: 1rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-top: 0.5rem;
   }
