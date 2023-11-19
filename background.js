@@ -36,8 +36,14 @@ function mapValueToColor(value) {
     return [red, green, 0, 1];
 }
 
+async function handler() {
+  await setBadge()
+  setInterval(async () => {
+    await setBadge()
+  }, 1000 * 10) //seconds
+}
 
-setBadge()
-setInterval(async () => {
-  setBadge()
-}, 1000 * 10) //seconds
+
+chrome.runtime.onInstalled.addListener(handler)
+
+chrome.runtime.onStartup.addListener(handler)
