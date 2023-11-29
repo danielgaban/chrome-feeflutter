@@ -1,25 +1,50 @@
 <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeeFlutter</title>
+  </head>
   <body>
     <img src="bitcoin.png" height=100 />
     <section>
-      <div>
-        <h2>Regular</h2>
-        <span id="regularPrice">[LOADING]</span>
-        <span>sat/byte</span>
+      <div class="upper">
+        <div>
+          <h2>Regular</h2>
+          <span id="regularPrice">[LOADING]</span>
+          <span>sat/byte</span>
+        </div>
+        <div>
+          <h2>Priority</h2>
+          <span id="priorityPrice">[LOADING]</span>
+          <span>sat/byte</span>
+        </div>
       </div>
-      <div>
-        <h2>Priority</h2>
-        <span id="priorityPrice">[LOADING]</span>
-        <span>sat/byte</span>
+      <h2>Predicted Cost</h2>
+      <table cellspacing="0" cellpadding="0">
+        <thead>
+          <th>bytes</th>
+          <th>sat</th>
+          <th>dolar</th>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <!--
+      <div class="lower">
+        <div>
+          <span>
+            150<br>bytes
+          </span>
+        </div>
+        <div>
+          <span id="transactionPrice">[LOADING]</span>
+          <span>sat</span>
+          <br>
+          <span id="transactionDolar">[LOADING]</span>
+          <span>usd</span>
+        </div>
       </div>
-      <div>
-        <h2>Transaction Cost</h2>
-        <span id="transactionPrice">[LOADING]</span>
-        <span>sat</span>
-        <span class="asymp">&asymp;</span>
-        <span id="transactionDolar">[LOADING]</span>
-        <span>usd</span>
-      </div>
+      -->
     </section>
     <script src="bitcoin.js" ></script>
   </body>
@@ -37,16 +62,42 @@
   section {
     width: 12rem;
     height: fit-content;
-    display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-top: 0.5rem;
   }
   section h2 {
     font-size: 1.25rem;
   }
-  div:last-of-type {
-    	grid-column: span 2 / span 2;
+  section .upper {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  section table {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+  }
+  section table thead {
+    background-color: #fdac37;
+  }
+  section table th {
+    font-weight: unset;
+  }
+  section table tr {
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    line-height: 2rem;
+  }
+  section table tbody tr:nth-of-type(odd) {
+    background: #f4c693
+  }
+  section table tbody tr:nth-of-type(even) {
+    background: #f4d1a9
+  }
+  section table tbody td {
+    font-size: 0.8rem;
+  }
+  section table tbody tr td:nth-of-type(3) {
+    font-weight: bold;
   }
   .asymp {
     margin: 0;
