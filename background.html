@@ -29,22 +29,14 @@
         <tbody>
         </tbody>
       </table>
-      <!--
-      <div class="lower">
-        <div>
-          <span>
-            150<br>bytes
-          </span>
-        </div>
-        <div>
-          <span id="transactionPrice">[LOADING]</span>
-          <span>sat</span>
-          <br>
-          <span id="transactionDolar">[LOADING]</span>
-          <span>usd</span>
-        </div>
+      <h2>Price History</h2>
+      <p id="max" />
+      <div class="priceHistory">
       </div>
-      -->
+      <div class="bottomHistory">
+        <p id="timeframe"></p>
+        <p id="min"></p>
+      </div>
     </section>
     <script src="bitcoin.js" ></script>
   </body>
@@ -99,6 +91,32 @@
   section table tbody tr td:nth-of-type(3) {
     font-weight: bold;
   }
+  section .priceHistory {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: end;
+    width: 100%;
+    height: 5rem;
+  }
+  section .priceHistory > div {
+    width: 100%;
+    background-color: #fdac37;
+  }
+
+  section .bottomHistory {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  #min, #max, #timeframe {
+    margin: unset;
+    text-align: right;
+  }
+  #timeframe {
+    text-align: left;
+  }
+  
   .asymp {
     margin: 0;
   }
