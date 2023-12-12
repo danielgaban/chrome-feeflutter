@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "FeeFlutter - bitcoin transaction cost",
   "description": "Real-time btc fee price. Spot great moments to make bitcoin transactions with this tool",
-  "version": "1.3.0",
+  "version": "2.1.0",
   "action": {
     "default_popup": "background.html",
     "default_icon": "bitcoin.png"
